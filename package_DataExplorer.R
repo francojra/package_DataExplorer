@@ -22,9 +22,8 @@ library(dplyr)
 library(readr)
 
 # read csv file
-df <- read.csv("C:\\Users\\jeann\\OneDrive\\Área de Trabalho\\cardio_train.csv", 
-               sep = ";")
-df
+df <- read.csv("cardio_train.csv", sep = ";")
+view(df)
 
 # pre-processing
 df <- 
@@ -32,12 +31,33 @@ df <-
   select(df, -id) %>%
   # age: days -> years
   mutate(age = round(age / 365))
-
+df
 
 # observe first rows
 head(df)
 
-# Métricas do banco de dados ---------------------------------------------------------------------------------------------------------------
+# Métrica do banco de dados ---------------------------------------------------------------------------------------------------------------
 
 summary(df)
+df$cardio <- as.factor(df$cardio)
 
+# Análise Exploratória de Dados com o Pacote -----------------------------------------------------------------------------------------------
+
+install.packages("DataExplorer")
+library(DataExplorer)
+
+
+df %>%
+    create_report(
+        output_file = paste("Report", format(Sys.time(), "%Y-%m-%d %H:%M:%S %Z"), sep = " - "),
+        report_title = "EDA Report - Cardiovascular Disease",
+        y = "cardio"
+    )
+
+plot_str(df)
+plot_bar(df)
+plot_bar(df, by = "cardio")
+plot_qq(df)
+plot_density(df)
+plot_correlation(df)
+plot_prcomp(df)
