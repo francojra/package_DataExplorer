@@ -49,8 +49,12 @@ df$active <- as.factor(df$active)
 
 # Análise Exploratória de Dados com o Pacote -----------------------------------------------------------------------------------------------
 
+## Baixar pacote
+
 install.packages("DataExplorer")
 library(DataExplorer)
+
+## Gerar relatório com todas as Análises Exploratórias dos Dados
 
 df %>%
     create_report(
@@ -59,10 +63,13 @@ df %>%
         y = "cardio"
     )
 
+## Gráficos
+
 plot_str(df) # Gráfico com estrutura dos dados
-plot_bar(df) # Gráfico de barras para cada variável discreta
-plot_bar(df, by = "cardio")
-plot_qq(df)
-plot_density(df)
-plot_correlation(df)
-plot_prcomp(df)
+plot_bar(df) # Gráficos de barras para cada variável discreta
+plot_bar(df, by = "cardio") # Gráficos de barras agrupados em relação a uma variável discreta
+plot_qq(df) # Gráficos quantile-quantile para variáveis contínuas
+plot_density(df) # Gráficos de densidade para as variáveis contínuas
+plot_correlation(df) # Mapa de correlação entre variáveis
+plot_prcomp(df) # Performa a Principal Component Analysis (PCA) e indica a porcentagem
+# de variância explicada por cada componente principal
