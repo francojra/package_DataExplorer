@@ -40,12 +40,17 @@ head(df)
 
 summary(df)
 df$cardio <- as.factor(df$cardio)
+df$gender <- as.factor(df$gender)
+df$cholesterol <- as.factor(df$cholesterol)
+df$gluc <- as.factor(df$gluc )
+df$smoke <- as.factor(df$smoke)
+df$alco <- as.factor(df$alco)
+df$active <- as.factor(df$active)
 
 # Análise Exploratória de Dados com o Pacote -----------------------------------------------------------------------------------------------
 
 install.packages("DataExplorer")
 library(DataExplorer)
-
 
 df %>%
     create_report(
@@ -54,8 +59,8 @@ df %>%
         y = "cardio"
     )
 
-plot_str(df)
-plot_bar(df)
+plot_str(df) # Gráfico com estrutura dos dados
+plot_bar(df) # Gráfico de barras para cada variável discreta
 plot_bar(df, by = "cardio")
 plot_qq(df)
 plot_density(df)
