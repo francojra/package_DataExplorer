@@ -4,7 +4,7 @@
 - Autoria do script: Jeanne Franco 
 - Data: 21/02/22 
 
-#### Etapas do script
+#### Etapas do script:
 
 1. Sobre o pacote;
 2. Carregar dados e observar primeiras linhas;
